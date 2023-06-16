@@ -1,0 +1,14 @@
+_target_: jejeqx._src.transforms.pipelines.make_pipeline
+
+steps_config:
+  - timedelta:
+      _target_: jejeqx._src.transforms.dataframe.temporal.TimeDelta
+      time_min: "2012-10-01"
+      time_delta: 1
+      time_unit: "s"
+
+  - timeminmax:
+      _target_: jejeqx._src.transforms.dataframe.scaling.MinMaxDF
+      columns: ["time"]
+      min_val: -1
+      max_val: 1

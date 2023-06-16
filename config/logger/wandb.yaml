@@ -1,0 +1,10 @@
+_target_: pytorch_lightning.loggers.WandbLogger
+mode: "offline"
+save_dir: "/gpfsscratch/rech/cli/uvo53rl"
+entity: "ige"
+project: "jax4eo"
+id: null
+prefix: ""
+group: ""
+tags: []
+job_type: ""
