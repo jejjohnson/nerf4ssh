@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: default.yaml
+  - domain: gulfstream.yaml
+  - experiment: ose_gf_2017.yaml
+  - model: siren.yaml
+  - optimizer: adam
+  - paths: default.yaml
+  - period: default.yaml
+  - preprocess: default.yaml
