@@ -16,25 +16,45 @@ cd nerf4ssh
 mamba env create -f environments/linux.yaml
 ```
 
+### `pip`
+
+```bash
+pip install "git+https://github.com/jejjohnson/nerf4ssh.git"
+```
+
+### `poetry`
+
+```bash
+git clone https://github.com/jejjohnson/nerf4ssh.git
+cd nerf4ssh
+mamba create -n nerf4ssh python=3.10 poetry
+poetry install
+```
+
 
 ## External Packages
 
 I use quite a few of external packages that I've relegated to their own repo.
 
-**Neural Fields** - This package has all of the NerF algorithms I use for the experiments.
+**Neural Fields**
+
+I use the [`eqx-nerf`](https://github.com/jejjohnson/eqx-nerf) package has all of the NerF algorithms.
 
 ```bash
 pip install "git+https://github.com/jejjohnson/eqx-nerf.git"
 ```
 
-**Trainer** - This package has the NN Trainer and logging that I use for this experiment.
+**Trainer**
+
+I use the [`eqx-trainer`](https://github.com/jejjohnson/eqx-trainer) package for the NN Trainer and logging.
 
 ```bash
 pip install "git+https://github.com/jejjohnson/eqx-trainer.git"
 ```
 
+**OceanBench**
 
-**OceanBench** - This package has the datasets and metrics that I use for this paper.
+I use the [`OceanBench`](+https://github.com/jejjohnson/oceanbench) framework for the SSH datasets and metrics.
 
 ```bash
 brew install g++ cmake eigen boost gsl
