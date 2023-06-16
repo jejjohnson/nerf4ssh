@@ -1,4 +1,6 @@
-# Neural Fields for Sea Surface Height Interpolation [**WIP!**]
+# Neural Fields for Sea Surface Height Interpolation
+
+**WARNING**: This repo is WIP and is being constructed now. Stay Tuned!
 
 My experiments involving sea surface height (SSH) interpolation using coordinate-based neural networks, i.e. Neural Fields (NerFs).
 
