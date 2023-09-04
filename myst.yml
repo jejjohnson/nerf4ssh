@@ -1,0 +1,20 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: Start Here
+  # description:
+  keywords: []
+  authors: ["J. Emmanuel Johnson",]
+  github: https://github.com/jejjohnson/nerf4ssh
+  # bibliography: []
+site:
+  template: book-theme
+  title: Neural Fields 4 SSH Interpolation
+  # logo:
+  nav: []
+  actions:
+    - title: jaxsw
+      url: https://github.com/jejjohnson/nerf4ssh
+  domains: []
+exports:
+  - format: html

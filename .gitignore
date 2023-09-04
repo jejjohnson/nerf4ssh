@@ -155,3 +155,5 @@ notebooks/*.gif
 .DS_Store
 .vscode/settings.json
 \jbook/_build/
+\_build/
+*.keras

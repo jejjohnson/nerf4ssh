@@ -1,6 +1,7 @@
-import jax.numpy as jnp
-from jaxtyping import Array
+import keras_core as keras
 
 
-def psnr(x_mse: Array) -> Array:
-    return -10 * jnp.log(2 * x_mse)
+@keras.saving.register_keras_serializable()
+def psnr(y_true, y_pred):
+    mse = keras.losses.mean_squared_error(y_true, y_pred)
+    return - 10 * keras.ops.mean(keras.ops.log10(mse), axis=-1)

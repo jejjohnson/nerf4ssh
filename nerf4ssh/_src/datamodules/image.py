@@ -1,8 +1,8 @@
 import pytorch_lightning as pl
 import torch
-from eqx_trainer import NumpyLoader, RegressionDataset
+# from eqx_trainer import NumpyLoader, RegressionDataset
 from nerf4ssh._src.data.images import load_fox, load_cameraman
-from jejeqx._src.features.coords import get_image_coordinates
+from nerf4ssh._src.features.coords import get_image_coordinates
 from torch.utils.data import random_split, DataLoader, TensorDataset
 from einops import rearrange
 from skimage.transform import rescale, resize, downscale_local_mean
@@ -54,11 +54,15 @@ class ImageDM(pl.LightningDataModule):
             coords, pixel_vals, method=self.split_method
         )
 
-        self.ds_train = RegressionDataset(xtrain, ytrain)
-
-        self.ds_valid = RegressionDataset(xvalid, yvalid)
-
-        self.ds_test = RegressionDataset(coords, pixel_vals)
+        self.ds_train = torch.utils.data.TensorDataset(
+            torch.from_numpy(xtrain), torch.from_numpy(ytrain)
+        )
+        self.ds_valid = torch.utils.data.TensorDataset(
+            torch.from_numpy(xvalid), torch.from_numpy(yvalid)
+        )
+        self.ds_test = torch.utils.data.TensorDataset(
+            torch.from_numpy(coords), torch.from_numpy(pixel_vals)
+        )
 
         return self
 
@@ -85,18 +89,24 @@ class ImageDM(pl.LightningDataModule):
         return get_image_coordinates(image)
 
     def train_dataloader(self):
-        return NumpyLoader(
-            self.ds_train, batch_size=self.batch_size, shuffle=self.shuffle
-        )
+        return torch.utils.data.DataLoader(
+                self.ds_train, batch_size=self.batch_size, shuffle=True
+            )
 
     def val_dataloader(self):
-        return NumpyLoader(self.ds_valid, batch_size=self.batch_size)
+        return torch.utils.data.DataLoader(
+                self.ds_valid, batch_size=self.batch_size, shuffle=False
+            )
 
     def test_dataloader(self):
-        return NumpyLoader(self.ds_test, batch_size=self.batch_size)
+        return torch.utils.data.DataLoader(
+                self.ds_test, batch_size=self.batch_size, shuffle=False
+            )
 
     def predict_dataloader(self):
-        return NumpyLoader(self.ds_test, batch_size=self.batch_size)
+        return torch.utils.data.DataLoader(
+                self.ds_test, batch_size=self.batch_size, shuffle=False
+            )
 
 
 class ImageFox(ImageDM):
