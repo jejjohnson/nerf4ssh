@@ -1,13 +1,20 @@
-
+import numpy as np
 import keras_core as keras
 
 
 class RFFLayer(keras.layers.Layer):
-    def __init__(self, num_features, ard: bool=False):
+    def __init__(
+        self, 
+        num_features, 
+        ard: bool=False,
+        length_scale_train: bool=False, 
+        variance_train: bool=False
+    ):
         super().__init__()
         self.num_features = num_features
         self.ard = ard
-
+        self.length_scale_train = length_scale_train
+        self.variance_train = variance_train
     def build(self, input_shape):
         self.omega = self.add_weight(
             shape=(input_shape[-1], self.num_features),
@@ -16,19 +23,19 @@ class RFFLayer(keras.layers.Layer):
         )
         self.length_scale = self.add_weight(
             shape=() if self.ard is False else (input_shape[-1],),
-            initializer="random_normal",
-            trainable=True,
-            # constraint=keras.constraints.NonNeg()
+            initializer=keras.initializers.constant(get_default_scale(input_shape[-1])),
+            trainable=self.length_scale_train,
+            constraint=keras.constraints.NonNeg()
         )
         self.variance = self.add_weight(
             shape=(),
-            initializer="random_normal",
-            trainable=True,
-            # constraint=keras.constraints.NonNeg()
+            initializer=keras.initializers.constant(1.0),
+            trainable=self.variance_train,
+            constraint=keras.constraints.NonNeg()
         )
 
     def call(self, inputs):
-        kernel = self.omega / keras.ops.softplus(self.length_scale)
+        kernel = (1.0 / self.length_scale) * self.omega
         inputs = keras.ops.matmul(inputs, kernel)
         inputs = keras.ops.hstack([
             keras.ops.sin(inputs),
@@ -41,4 +48,17 @@ class RFFLayer(keras.layers.Layer):
         return {
             "num_features": self.num_features, 
             "ard": self.ard, 
+            "length_scale_train": self.length_scale_train,
+            "variance_train": self.variance_train,
+            
         }
+
+
+def get_default_scale(input_dim, ard: bool=False):
+
+    length_scale = np.sqrt(input_dim / 2.0)
+    
+    if ard:
+        return np.asarray([length_scale] * input_dim)
+        
+    return length_scale

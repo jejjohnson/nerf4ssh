@@ -18,6 +18,14 @@
 format: jb-book
 root: content/overview
 chapters:
+  - title: Paper
+    sections:
+      - file: content/paper/1_introduction
+      - file: content/paper/2_methods
+      - file: content/paper/3_exp1_toy
+      - file: content/paper/4_exp2_osse
+      - file: content/paper/5_exp3_ose
+      - file: content/paper/6_conclusions
   - title: Tutorials
     sections:
       - file: content/tutorials/1.1_naive_nerfs
