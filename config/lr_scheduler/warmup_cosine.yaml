@@ -1,0 +1,6 @@
+scheduler:
+  _target_: optax.warmup_cosine_decay_schedule
+  init_value: 0
+  peak_value: 1e0
+  warmup_steps: 25
+  end_value: 1e-5

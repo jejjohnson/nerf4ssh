@@ -1,0 +1,44 @@
+mlp:
+   _target_: jejeqx._src.nets.nerfs.base.SpatioTempNerF
+   basis_net:
+        _target_: equinox.nn.MLP
+        in_size: 3
+        out_size: 1
+        width_size: 128
+        depth: 5
+        activation:
+            _target_: jejeqx._src.nets.activations.ReLU
+        final_activation:
+            _target_: equinox.nn.Identity
+        key:
+            _target_: jax.random.PRNGKey
+            seed: 123
+
+
+ffn:
+   _target_: jejeqx._src.nets.nerfs.base.SpatioTempNerF
+   basis_net:
+        _target_: jejeqx._src.nets.nerfs.ffn.RFFNet
+        in_size: 3
+        out_size: 1
+        width_size: 256
+        num_features: 128
+        depth: 5
+        ard: False
+        method: "rbf"
+        key:
+            _target_: jax.random.PRNGKey
+            seed: 123
+
+siren:
+   _target_: jejeqx._src.nets.nerfs.base.SpatioTempNerF
+   basis_net:
+        _target_: jejeqx._src.nets.nerfs.siren.SirenNet
+        in_size: 3
+        out_size: 1
+        width_size: 256
+        depth: 5
+        key:
+            _target_: jax.random.PRNGKey
+            seed: 123
+

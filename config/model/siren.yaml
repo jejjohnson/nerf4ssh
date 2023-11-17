@@ -1,0 +1,10 @@
+_target_: eqx_nerf.SpatioTempNerF
+basis_net:
+  _target_: eqx_nerf.SirenNet
+  in_size: 3
+  out_size: 1
+  width_size: 256
+  depth: 5
+  key:
+    _target_: jax.random.PRNGKey
+    seed: 123

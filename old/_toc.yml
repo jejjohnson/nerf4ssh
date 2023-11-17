@@ -1,0 +1,76 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: content/overview.md
+parts:
+  - caption: Tutorials
+    chapters:
+      - file: content/tutorial/1.1_naive_nerfs
+      - file: content/tutorial/1.2_gradients
+      - file: content/tutorial/1.3_spatiotemporal
+      - file: content/tutorial/overview.md
+        sections:
+          - file: content/tutorial/1.4.1_sparse_obs_osse_nadir
+          - file: content/tutorial/1.4.2_sparse_obs_osse_swot
+          - file: content/tutorial/1.4.3_sparse_obs_ose_nadir
+  - caption: Manuscript Figures
+    chapters:
+      - file: content/papers/james/overview.md
+        sections:
+          - file: content/papers/james/osse_gf_2012/overview.md
+            sections:
+              - file: content/papers/james/osse_gf_2012/7.2.1_paper_fig_dc20a_maps
+              - file: content/papers/james/osse_gf_2012/7.2.2_paper_fig_dc20a_movies
+              - file: content/papers/james/osse_gf_2012/7.2.3_paper_fig_dc20a_stats
+              - file: content/papers/james/osse_gf_2012/7.2.4_paper_fig_dc20a_pixel_densities
+              - file: content/papers/james/osse_gf_2012/7.2.5_paper_fig_dc20a_psd_isotropic
+              - file: content/papers/james/osse_gf_2012/7.2.6_paper_fig_dc20a_psd_spacetime
+# sections:
+#   - file: content/tutorial/1.4.1_sparse_obs_osse_nadir
+#   - file: content/tutorial/1.4.2_sparse_obs_osse_swot
+#   - file: content/tutorial/1.4.3_sparse_obs_ose_nadir
+# - caption: Manuscript Figures
+#   chapters:
+#     - file
+
+# parts:
+#   # ###################################################################
+#   # RESOURCES
+#   # ###################################################################
+#   - caption: Resources
+#     chapters:
+#       - file: content/resources/python/overview
+#         sections:
+#           - file: content/resources/python/ides
+#           - file: content/resources/python/stack
+#           - file: content/resources/python/earthsci_stack
+#           - file: content/resources/python/dl_stack
+#           - file: content/resources/python/scale_stack
+#           - file: content/resources/python/good_code
+#   # ###################################################################
+#   # TUTORIALS
+#   # ###################################################################
+#   - caption: Tutorials
+#     chapters:
+#     - file: content/tutorials/jax_journey/overview
+#       sections:
+#       - file: content/tutorials/jax_journey/ecosystem
+#       - file: content/tutorials/jax_journey/vmap
+#       - file: content/tutorials/jax_journey/jit
+#       - file: content/tutorials/jax_journey/classes
+#       - file: content/tutorials/jax_journey/optimization
+#       - file: content/tutorials/jax_journey/algorithms/overview
+#         sections:
+#         - file: content/tutorials/jax_journey/algorithms/bisection
+#         - file: content/tutorials/jax_journey/algorithms/kernel_derivatives
+#         - file: content/tutorials/jax_journey/algorithms/gpr
+#         - file: content/tutorials/jax_journey/gfs_with_jax.ipynb
+#       - file: content/tutorials/twelve_steps_ns/overview
+#         sections:
+#         - file: content/tutorials/twelve_steps_ns/1.1_linear_advection
+#     - file: content/tutorials/remote/overview
+#       sections:
+#       - file: content/tutorials/remote/ssh
+#       - file: content/tutorials/remote/conda
+#       - file: content/tutorials/remote/jlab

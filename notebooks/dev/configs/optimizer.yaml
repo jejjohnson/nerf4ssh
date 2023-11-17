@@ -1,0 +1,7 @@
+adam:
+    _target_: optax.adam
+    learning_rate: 1e-4
+
+adamw:
+    _target_: optax.adamw
+    learning_rate: 1e-4

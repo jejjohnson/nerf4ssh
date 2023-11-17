@@ -1,0 +1,35 @@
+# Table of Contents
+#
+# Myst will respect:
+# 1. New pages
+#      - file: relative/path/to/page
+# 2. New sections without an associated page
+#      - title: Folder Title
+#        sections: ...
+# 3. New sections with an associated page
+#      - file: relative/path/to/page
+#        sections: ...
+#
+# Note: Titles defined on pages here are not recognized.
+#
+# This spec is based on the JupyterBook table of contents.
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: content/overview
+chapters:
+  - title: Paper
+    sections:
+      - file: content/paper/1_introduction
+      - file: content/paper/2_methods
+      - file: content/paper/3_exp1_toy
+      - file: content/paper/4_exp2_osse
+      - file: content/paper/5_exp3_ose
+      - file: content/paper/6_conclusions
+  - title: Tutorials
+    sections:
+      - file: content/tutorials/1.1_naive_nerfs
+      - file: content/tutorials/1.2_spatial
+      - file: content/tutorials/1.3_spatiotemporal
+      - file: content/tutorials/2.1_osse_nadir
+      - file: content/tutorials/2.2_osse_nadirswot
